@@ -142,17 +142,17 @@ public class LockscreenViewService extends Service {
 
         if (null == mLockscreenView) {
             mLockscreenView = mInflater.inflate(R.layout.view_locokscreen, null);
-
         }
     }
 
     private boolean isLockScreenAble() {
         boolean isLock = SharedPreferencesUtil.get(Lockscreen.ISLOCK);
-        if (isLock) {
-            isLock = true;
-        } else {
-            isLock = false;
-        }
+        ////// delete at github
+        // if (isLock) {
+        //     isLock = true;
+        // } else {
+        //     isLock = false;
+        // }
         return isLock;
     }
 
