@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="library-1.4.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lockscreenusingservice/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/res" />
+      <root url="jar://$PROJECT_DIR$/lockscreenusingservice/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

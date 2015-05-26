@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/lockscreen_background_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+
+        <RelativeLayout
+            android:id="@+id/lockscreen_background_status_dummy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"></RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lockscreen_background_in_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lockscreen_background_status_dummy"
+            android:background="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/lockscreen_background_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/lock" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.github.dubu.lockscreenusingservice.LockScreenView
+        android:id="@+id/lockscreen_forground_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/lockscreen_forground_status_dummy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/holo_orange_light"></RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@drawable/images"/>
+
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/shimmer_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text=">>> Slide to Unlock"
+            android:textColor="#444"
+            android:textSize="30sp" />
+
+    </com.github.dubu.lockscreenusingservice.LockScreenView>
+
+</RelativeLayout>
+
