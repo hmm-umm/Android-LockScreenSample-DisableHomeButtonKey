@@ -1,10 +1,16 @@
-# LockScreenSample-DisableHomeButton
-Android LockScreen Sample Using Service - Disable HomeButton
+# LockScreenSample-Disable HomeButton Event
+Android LockScreenSample Using Service - Disable HomeButton Event
+
+LockScreenSample use Android Service. So, Ignores HomeButton Event.
+
+This Sample support UnSoft Home Key(UnVirtual Home Key) like Samsung Galaxy And Soft Home Key(Virtual Home Key) like LG G, Google Nexus.
+
+Test Samsung Galaxy,LG G, Nexus5
 
 ###UnSoftKey - Test Samsung
 ![ScreenShot](rawimg/unsoftkey_unlock_samsung.gif)![ScreenShot](rawimg/unsoftkey_lock_samsung.gif)
 
-###SoftKey - Test LG, Nexus5
+###SoftKey - Test LG G, Nexus5
 
 ![ScreenShot](rawimg/softkey_unlock_lg.gif)![ScreenShot](rawimg/softkey_lock_lg.gif) ![ScreenShot](rawimg/softkey_unlock_nexus5.gif)
 
@@ -27,3 +33,19 @@ Lockscreen.getInstance(mContext).stopLockscreenService();
 ### Welcome any Modification
 You customize lockscreenunsingservice.lib files
 
+
+License
+=======
+Copyright 2015 DUBULEE
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
