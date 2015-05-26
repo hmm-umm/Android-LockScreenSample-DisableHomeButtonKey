@@ -1,9 +1,16 @@
 # LockScreenSample-Disable HomeButton Event
 Android LockScreenSample Using Service - Disable HomeButton Event
-
 LockScreenSample use Android Service. So, Ignores HomeButton Event.
 
-This Sample support UnSoft Home Key(UnVirtual Home Key) like Samsung Galaxy And Soft Home Key(Virtual Home Key) like LG G, Google Nexus.
+As there are a lot questions about "how to disable home button in android?" on `Stack Overflow`, such as
+
+* [how to disable home button in android?][4]
+* [Android - Is It possible to disable the click of home button][5]
+* [How to disable Home and other system buttons in Android?][6]
+
+
+This Sample support UnSoft Home Key(UnVirtual Home Key) like Samsung Galaxy 
+And Soft Home Key(Virtual Home Key) like LG G, Google Nexus.
 
 Test Samsung Galaxy,LG G, Nexus5
 
