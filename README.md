@@ -4,12 +4,9 @@ Android LockScreen Sample Using Service - Disable HomeButton
 UnSoftKey - Test Samsung
 
 
-[![ScreenShot](unsoftkey_unlock_samsung.gif)![ScreenShot](unsoftkey_lock_samsung.gif)]
+[![ScreenShot](rawimg/unsoftkey_unlock_samsung.gif)![ScreenShot](rawimg/unsoftkey_lock_samsung.gif)]
 
-SoftKey - Test LG, Nexus5
-[![ScreenShot](rawimg/softkey_unlock_lg.gif)]
-[![ScreenShot](rawimg/softkey_lock_lg.gif)]
-[![ScreenShot](rawimg/softkey_unlock_nexus5.gif)]
+
 
 
 ## How to use
