@@ -1,6 +1,6 @@
-# LockScreenSample-Disable HomeButton Event
-Android LockScreenSample Using Service - Disable HomeButton Event
-LockScreenSample use Android Service. So, Ignores HomeButton Event.
+# LockScreenSample-Disable HomeButton Key Event
+Android LockScreenSample Using Service - Disable HomeButton Key Event
+LockScreenSample use Android Service. So, Ignores HomeButton Key Event.
 
 As there are a lot questions about "how to disable home button in android?" on `Stack Overflow`, such as
 
