@@ -30,12 +30,12 @@ Test Samsung Galaxy,LG G, Nexus5
 
 Test Start
 ```java
-Lockscreen.getInstance(mContext).startLockscreenService();
+Lockscreen.getInstance(ContextInstance).startLockscreenService();
 ```
 
 Test Stop
 ```java
-Lockscreen.getInstance(mContext).stopLockscreenService();
+Lockscreen.getInstance(ContextInstance).stopLockscreenService();
 ```
 
 ## Customization
