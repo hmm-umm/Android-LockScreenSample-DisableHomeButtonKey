@@ -46,6 +46,5 @@ public class Lockscreen {
         mContext.stopService(stopLockscreenViewIntent);
         Intent stopLockscreenIntent =  new Intent(mContext, LockscreenService.class);
         mContext.stopService(stopLockscreenIntent);
-
     }
 }

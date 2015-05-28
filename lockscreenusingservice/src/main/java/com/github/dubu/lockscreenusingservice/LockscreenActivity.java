@@ -1,7 +1,6 @@
 package com.github.dubu.lockscreenusingservice;
 
 import android.app.Activity;
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -15,21 +14,19 @@ import android.widget.RelativeLayout;
 
 import com.github.dubu.lockscreenusingservice.service.LockscreenViewService;
 
-
 /**
  * Created by DUBULEE on 15. 3. 16..
  */
 public class LockscreenActivity extends Activity {
     private final String TAG = "LockscreenActivity";
-    private static Context sLockscreenActivityContext = null;;
-    private KeyguardManager mKeyManager = null;
-    private KeyguardManager.KeyguardLock mKeyLock = null;
+    private static Context sLockscreenActivityContext = null;
+    ;
     private RelativeLayout mLockscreenMainLayout = null;
 
     public static SendMassgeHandler mMainHandler = null;
 
-    public PhoneStateListener phoneStateListener = new PhoneStateListener()  {
-        public void onCallStateChanged(int state, String incomingNumber)  {
+    public PhoneStateListener phoneStateListener = new PhoneStateListener() {
+        public void onCallStateChanged(int state, String incomingNumber) {
 
             switch (state) {
                 case TelephonyManager.CALL_STATE_IDLE:
@@ -39,9 +36,10 @@ public class LockscreenActivity extends Activity {
                 default:
                     break;
             }
-        };
-    };
+        }
 
+        ;
+    };
 
 
     @Override
@@ -61,14 +59,15 @@ public class LockscreenActivity extends Activity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        }
-        else {
+        } else {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
         TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         manager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
 
         initLockScreenUi();
+
+        setLockGuard();
     }
 
     private class SendMassgeHandler extends android.os.Handler {
@@ -79,7 +78,7 @@ public class LockscreenActivity extends Activity {
         }
     }
 
-    private  void finishLockscreenAct() {
+    private void finishLockscreenAct() {
         finish();
     }
 
@@ -96,21 +95,15 @@ public class LockscreenActivity extends Activity {
         return super.dispatchTouchEvent(ev);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        boolean isLockEnable  = false;
-        initKeyguardService();
+    private void setLockGuard() {
+        boolean isLockEnable = false;
         if (!LockscreenUtil.getInstance(sLockscreenActivityContext).isStandardKeyguardState()) {
-            setStandardKeyguardState(false);
             isLockEnable = false;
-        }
-        else {
-            setStandardKeyguardState(true);
+        } else {
             isLockEnable = true;
         }
 
-        Intent startLockscreenIntent =  new Intent(this, LockscreenViewService.class);
+        Intent startLockscreenIntent = new Intent(this, LockscreenViewService.class);
         startService(startLockscreenIntent);
 
         boolean isSoftkeyEnable = LockscreenUtil.getInstance(sLockscreenActivityContext).isSoftKeyAvail(this);
@@ -124,46 +117,17 @@ public class LockscreenActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
+
 
     @Override
     protected void onDestroy() {
-        setStandardKeyguardState(false);
         super.onDestroy();
-    }
-
-    private void initKeyguardService() {
-        if (null != mKeyManager) {
-            mKeyManager = null;
-        }
-        mKeyManager =(KeyguardManager)getSystemService(this.KEYGUARD_SERVICE);
-        if (null != mKeyManager) {
-            if (null != mKeyLock) {
-                mKeyLock = null;
-            }
-            mKeyLock = mKeyManager.newKeyguardLock(KEYGUARD_SERVICE);
-        }
-    }
-
-
-    private void setStandardKeyguardState(boolean isStart) {
-        if (isStart) {
-            if(null != mKeyLock){
-                mKeyLock.reenableKeyguard();
-            }
-        }
-        else {
-
-            if(null != mKeyManager){
-                mKeyLock.disableKeyguard();
-            }
-        }
-    }
-
-    private void hideLockScreen() {
-        if (null != mLockscreenMainLayout) {
-            RemoveViewUtil.getInstance().unbindDrawables(mLockscreenMainLayout);
-        }
-        finishLockscreenAct();
     }
 
 

@@ -1,5 +1,6 @@
 package com.github.dubu.lockscreenusingservice.service;
 
+import android.app.KeyguardManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.github.dubu.lockscreenusingservice.LockscreenActivity;
+import com.github.dubu.lockscreenusingservice.LockscreenUtil;
 
 
 /**
@@ -69,7 +71,48 @@ public class LockscreenService extends Service {
         } else {
             Log.d(TAG, TAG + " onStartCommand intent NOT existed");
         }
+        setLockGuard();
         return LockscreenService.START_STICKY;
+    }
+
+
+    private void setLockGuard() {
+        initKeyguardService();
+        if (!LockscreenUtil.getInstance(mContext).isStandardKeyguardState()) {
+            setStandardKeyguardState(false);
+        } else {
+            setStandardKeyguardState(true);
+        }
+    }
+
+    private KeyguardManager mKeyManager = null;
+    private KeyguardManager.KeyguardLock mKeyLock = null;
+
+    private void initKeyguardService() {
+        if (null != mKeyManager) {
+            mKeyManager = null;
+        }
+        mKeyManager =(KeyguardManager)getSystemService(mContext.KEYGUARD_SERVICE);
+        if (null != mKeyManager) {
+            if (null != mKeyLock) {
+                mKeyLock = null;
+            }
+            mKeyLock = mKeyManager.newKeyguardLock(mContext.KEYGUARD_SERVICE);
+        }
+    }
+
+    private void setStandardKeyguardState(boolean isStart) {
+        if (isStart) {
+            if(null != mKeyLock){
+                mKeyLock.reenableKeyguard();
+            }
+        }
+        else {
+
+            if(null != mKeyManager){
+                mKeyLock.disableKeyguard();
+            }
+        }
     }
 
 
@@ -82,6 +125,7 @@ public class LockscreenService extends Service {
     @Override
     public void onDestroy() {
         stateRecever(false);
+        setStandardKeyguardState(true);
     }
 
     private void startLockscreenActivity() {
