@@ -7,7 +7,7 @@ LockScreenSample use Android Service. So, Ignores HomeButton Key Event.
 
 compile 'com.github.dubulee:lockscreendiablehomebuttonkey:1.0.1'
 
-* [Download apk](/downloadapk)
+
 
 As there are a lot questions about "how to disable home button in android?" on `Stack Overflow`, such as
 
