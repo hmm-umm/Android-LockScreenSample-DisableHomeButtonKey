@@ -2,9 +2,11 @@
   <library name="library-1.4.0">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lockscreenusingservice/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/res" />
-      <root url="jar://$PROJECT_DIR$/lockscreenusingservice/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lockscreenusingservice/build/intermediates/exploded-aar/com.romainpiel.shimmer/library/1.4.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.romainpiel.shimmer/library/1.4.0/9f8098a1b8f6967f35f621caeb6fa8c2c8fdb450/library-1.4.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
