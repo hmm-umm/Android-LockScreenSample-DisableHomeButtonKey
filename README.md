@@ -9,7 +9,7 @@ Current version: [1.0.1]
 
 Gradle:
 ```groovy
-compile 'com.jakewharton:butterknife:5.1.1'
+compile 'com.github.dubulee:lockscreendiablehomebuttonkey:1.0.1'
 ```
 
 As there are a lot questions about "how to disable home button in android?" on `Stack Overflow`, such as
