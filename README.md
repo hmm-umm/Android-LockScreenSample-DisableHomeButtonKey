@@ -22,7 +22,7 @@ As there are a lot questions about "how to disable home button in android?" on `
 This Sample support UnSoft Home Key(UnVirtual Home Key) like Samsung Galaxy 
 And Soft Home Key(Virtual Home Key) like LG G, Google Nexus.
 
-This Sample is similar to Microsoft NextLock, DaumKaKao KaKaoTalk Notification Cover
+This Sample is similar to Microsoft corp. NextLock, KaKao corp. KaKaoTalk Notification Cover
 
 Test Samsung Galaxy,LG G, Nexus5
 
