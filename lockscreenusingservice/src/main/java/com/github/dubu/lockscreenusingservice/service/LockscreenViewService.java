@@ -27,7 +27,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 
 
 /**
- * Created by DUBULEE on 15. 5. 20..
+ * Created by mugku on 15. 5. 20..
  */
 public class LockscreenViewService extends Service {
     private final int LOCK_OPEN_OFFSET_VALUE = 50;
