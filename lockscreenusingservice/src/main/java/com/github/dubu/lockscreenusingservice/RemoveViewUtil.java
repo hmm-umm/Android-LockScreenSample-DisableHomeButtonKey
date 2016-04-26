@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 /**
- * Created by DUBULEE on 15. 5. 20..
+ * Created by mugku on 15. 5. 20..
  */
 public class RemoveViewUtil {
     private static final String TAG = "RemoveViewUtil";
