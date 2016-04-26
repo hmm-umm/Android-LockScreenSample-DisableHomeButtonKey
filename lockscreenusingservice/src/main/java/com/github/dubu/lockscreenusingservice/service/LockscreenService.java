@@ -15,7 +15,7 @@ import com.github.dubu.lockscreenusingservice.LockscreenUtil;
 
 
 /**
- * Created by DUBULEE on 15. 5. 20..
+ * Created by mugku on 15. 5. 20..
  */
 public class LockscreenService extends Service {
     private final String TAG = "LockscreenService";
