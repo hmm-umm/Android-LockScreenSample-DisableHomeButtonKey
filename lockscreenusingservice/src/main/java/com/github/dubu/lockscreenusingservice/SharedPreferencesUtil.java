@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 
 /**
- * Created by DUBULEE on 15. 5. 20..
+ * Created by mugku on 15. 5. 20..
  */
 /**
  * SharedPreferences 를 사용 하기 위한 Util
