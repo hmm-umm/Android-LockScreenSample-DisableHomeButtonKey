@@ -7,7 +7,7 @@ import com.github.dubu.lockscreenusingservice.service.LockscreenService;
 import com.github.dubu.lockscreenusingservice.service.LockscreenViewService;
 
 /**
- * Created by DUBULEE on 15. 5. 20..
+ * Created by mugku on 15. 5. 20..
  */
 public class Lockscreen {
     private Context mContext = null;
