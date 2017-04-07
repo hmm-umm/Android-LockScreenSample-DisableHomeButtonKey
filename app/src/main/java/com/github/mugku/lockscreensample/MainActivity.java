@@ -1,19 +1,22 @@
-package com.github.dubu.lockscreensample;
+package com.github.mugku.lockscreensample;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
 
+import com.github.dubu.lockscreensample.R;
 import com.github.dubu.lockscreenusingservice.Lockscreen;
 import com.github.dubu.lockscreenusingservice.SharedPreferencesUtil;
 
-/**
- * Created by DUBU on 15. 5. 20..
- */
+import rx.functions.Action1;
+
 public class MainActivity extends ActionBarActivity {
     private SwitchCompat mSwitchd = null;
     private Context mContext = null;

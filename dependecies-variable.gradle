@@ -1,0 +1,17 @@
+ext {
+
+    base_application_name = "com.github.dubu"
+
+    compileSdkVersion = 25
+    buildToolsVersion = "25.0.2"
+    minSdkVersion = 16
+    targetSdkVersion = 23
+    supportLibraryVersion = '23.4.0'
+    v4SupportLibraryVersion = supportLibraryVersion
+
+    ver_android_support = "25.2.0"
+
+    support_appcompat = "com.android.support:appcompat-v7:$ver_android_support"
+    support_recyclerview = "com.android.support:recyclerview-v7:$ver_android_support"
+
+}

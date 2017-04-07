@@ -6,12 +6,17 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
+import rx.subjects.PublishSubject;
+
 /**
  * Created by mugku on 15. 5. 20..
  */
 public class LockscreenUtil {
     private Context mContext = null;
     private static LockscreenUtil mLockscreenUtilInstance;
+
+    private PublishSubject<Boolean> permissionCheckSubject;
+
     public static LockscreenUtil getInstance(Context context) {
         if (mLockscreenUtilInstance == null) {
             if (null != context) {
@@ -65,5 +70,13 @@ public class LockscreenUtil {
             result = mContext.getResources().getDimensionPixelSize(resourceId);
 
         return result;
+    }
+
+    public PublishSubject<Boolean> getPermissionCheckSubject() {
+        if (null == permissionCheckSubject) {
+            permissionCheckSubject = PublishSubject.create();
+        }
+
+        return permissionCheckSubject;
     }
 }

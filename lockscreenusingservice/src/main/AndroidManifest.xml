@@ -16,6 +16,9 @@
         <activity
             android:name=".LockscreenActivity" >
         </activity>
+        <activity
+            android:name=".PermissionActivity" >
+        </activity>
         <service android:name=".service.LockscreenService" >
         </service>
         <service android:name=".service.LockscreenViewService" >

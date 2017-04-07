@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Android-LockScreenSample-DisableHomeButtonKey.git.iml" filepath="$PROJECT_DIR$/Android-LockScreenSample-DisableHomeButtonKey.git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Android-LockScreenSample-DisableHomeButtonKey.iml" filepath="$PROJECT_DIR$/Android-LockScreenSample-DisableHomeButtonKey.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lockscreenusingservice/lockscreenusingservice.iml" filepath="$PROJECT_DIR$/lockscreenusingservice/lockscreenusingservice.iml" />
     </modules>

@@ -1,5 +1,6 @@
 package com.github.dubu.lockscreenusingservice.service;
 
+import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.Message;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,10 +22,14 @@ import android.widget.RelativeLayout;
 
 import com.github.dubu.lockscreenusingservice.Lockscreen;
 import com.github.dubu.lockscreenusingservice.LockscreenUtil;
+import com.github.dubu.lockscreenusingservice.PermissionActivity;
 import com.github.dubu.lockscreenusingservice.R;
 import com.github.dubu.lockscreenusingservice.SharedPreferencesUtil;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 
 /**
@@ -158,7 +164,34 @@ public class LockscreenViewService extends Service {
 
 
     private void attachLockScreenView() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(mContext)) {
+                Intent permissionActivityIntent = new Intent(mContext, PermissionActivity.class);
+                permissionActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(permissionActivityIntent);
 
+                LockscreenUtil.getInstance(mContext).getPermissionCheckSubject()
+                        .subscribeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                new Action1<Boolean>() {
+                                    @Override
+                                    public void call(Boolean aBoolean) {
+                                        addLockScreenView();
+                                    }
+                                }
+                        );
+            }
+            else {
+                addLockScreenView();
+            }
+        }
+        else {
+            addLockScreenView();
+        }
+
+    }
+
+    private void addLockScreenView() {
         if (null != mWindowManager && null != mLockscreenView && null != mParams) {
             mLockscreenView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -169,12 +202,11 @@ public class LockscreenViewService extends Service {
             mWindowManager.addView(mLockscreenView, mParams);
             settingLockView();
         }
-
     }
 
 
     private boolean dettachLockScreenView() {
-        if (null != mWindowManager && null != mLockscreenView) {
+        if (null != mWindowManager && null != mLockscreenView && isAttachedToWindow()) {
             mWindowManager.removeView(mLockscreenView);
             mLockscreenView = null;
             mWindowManager = null;
@@ -185,6 +217,10 @@ public class LockscreenViewService extends Service {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
+    private boolean isAttachedToWindow() {
+        return mLockscreenView.isAttachedToWindow();
+    }
 
     private void settingLockView() {
         mBackgroundLayout = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_background_layout);
