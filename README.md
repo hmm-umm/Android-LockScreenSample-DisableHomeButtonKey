@@ -5,11 +5,11 @@ LockScreenSample use Android Service. So, Ignores HomeButton Key Event.
 Download
 --------
 
-Current version: [1.0.1]
+Current version: [1.0.2]
 
 Gradle:
 ```groovy
-compile 'com.github.dubulee:lockscreendiablehomebuttonkey:1.0.1'
+compile 'com.github.dubulee:lockscreendiablehomebuttonkey:1.0.2'
 ```
 
 As there are a lot questions about "how to disable home button in android?" on `Stack Overflow`, such as
