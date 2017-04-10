@@ -27,6 +27,7 @@ This Sample is similar to Microsoft corp. - Next Lock Screen, KaKao corp. - KaKa
 Test Samsung Galaxy,LG G, Nexus5
 
 ###UnSoftKey - Test Samsung
+
 ![ScreenShot](rawimg/unsoftkey_unlock_samsung.gif)![ScreenShot](rawimg/unsoftkey_lock_samsung.gif)
 
 ###SoftKey - Test LG G, Nexus5
