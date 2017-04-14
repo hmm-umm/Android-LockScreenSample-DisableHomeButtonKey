@@ -14,13 +14,10 @@ import android.widget.RelativeLayout;
 
 import com.github.dubu.lockscreenusingservice.service.LockscreenViewService;
 
-/**
- * Created by mugku on 15. 3. 16..
- */
 public class LockscreenActivity extends Activity {
     private final String TAG = "LockscreenActivity";
     private static Context sLockscreenActivityContext = null;
-    ;
+
     private RelativeLayout mLockscreenMainLayout = null;
 
     public static SendMassgeHandler mMainHandler = null;

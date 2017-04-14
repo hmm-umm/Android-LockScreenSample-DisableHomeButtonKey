@@ -9,11 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 
-/**
- * Created by mugku on 2017. 4. 7..
- */
-
-public class PermissionActivity extends Activity{
+public class PermissionActivity extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +30,7 @@ public class PermissionActivity extends Activity{
                     LockscreenUtil.getInstance(this).getPermissionCheckSubject()
                             .onNext(true);
                     finish();
-                }
-                else {
+                } else {
                     //
                 }
                 break;

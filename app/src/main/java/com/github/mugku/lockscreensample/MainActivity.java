@@ -20,6 +20,7 @@ import rx.functions.Action1;
 public class MainActivity extends ActionBarActivity {
     private SwitchCompat mSwitchd = null;
     private Context mContext = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -13,10 +13,6 @@ import android.util.Log;
 import com.github.dubu.lockscreenusingservice.LockscreenActivity;
 import com.github.dubu.lockscreenusingservice.LockscreenUtil;
 
-
-/**
- * Created by mugku on 15. 5. 20..
- */
 public class LockscreenService extends Service {
     private final String TAG = "LockscreenService";
     //    public static final String LOCKSCREENSERVICE_FIRST_START = "LOCKSCREENSERVICE_FIRST_START";
@@ -92,7 +88,7 @@ public class LockscreenService extends Service {
         if (null != mKeyManager) {
             mKeyManager = null;
         }
-        mKeyManager =(KeyguardManager)getSystemService(mContext.KEYGUARD_SERVICE);
+        mKeyManager = (KeyguardManager) getSystemService(mContext.KEYGUARD_SERVICE);
         if (null != mKeyManager) {
             if (null != mKeyLock) {
                 mKeyLock = null;
@@ -103,13 +99,12 @@ public class LockscreenService extends Service {
 
     private void setStandardKeyguardState(boolean isStart) {
         if (isStart) {
-            if(null != mKeyLock){
+            if (null != mKeyLock) {
                 mKeyLock.reenableKeyguard();
             }
-        }
-        else {
+        } else {
 
-            if(null != mKeyManager){
+            if (null != mKeyManager) {
                 mKeyLock.disableKeyguard();
             }
         }

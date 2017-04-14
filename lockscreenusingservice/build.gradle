@@ -9,6 +9,20 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'dubulee'
+    groupId = 'com.github.dubulee'
+    artifactId = 'lockscreendiablehomebuttonkey'
+    publishVersion = '1.0.2'
+    desc = 'Android LockScreenSample Using Service - Disable HomeButton Key Event LockScreenSample use Android Service. So, Ignores HomeButton Key Event.'
+    website = 'https://github.com/mugku/Android-LockScreenSample-DisableHomeButtonKey'
+    issueTracker = "${website}/issues"
+    repository = "${website}.git"
+}
+
+
 
 android {
     compileSdkVersion 25

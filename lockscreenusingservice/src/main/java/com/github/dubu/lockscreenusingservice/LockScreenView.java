@@ -6,12 +6,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-/**
- * Created by mugku on 15. 5. 20..
- */
 public class LockScreenView extends RelativeLayout {
     private Context mActivityContext = null;
     private View mLayoutView = null;
+
     public LockScreenView(Context context) {
         super(context);
         mActivityContext = context;

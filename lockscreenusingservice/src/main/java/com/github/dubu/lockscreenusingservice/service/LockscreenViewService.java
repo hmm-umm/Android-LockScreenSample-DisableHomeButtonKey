@@ -31,10 +31,6 @@ import com.romainpiel.shimmer.ShimmerTextView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-
-/**
- * Created by mugku on 15. 5. 20..
- */
 public class LockscreenViewService extends Service {
     private final int LOCK_OPEN_OFFSET_VALUE = 50;
     private Context mContext = null;
@@ -65,6 +61,7 @@ public class LockscreenViewService extends Service {
             changeBackGroundLockView(mLastLayoutX);
         }
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -180,12 +177,10 @@ public class LockscreenViewService extends Service {
                                     }
                                 }
                         );
-            }
-            else {
+            } else {
                 addLockScreenView();
             }
-        }
-        else {
+        } else {
             addLockScreenView();
         }
 

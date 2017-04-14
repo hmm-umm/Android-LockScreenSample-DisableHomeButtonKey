@@ -8,9 +8,6 @@ import android.view.ViewTreeObserver;
 
 import rx.subjects.PublishSubject;
 
-/**
- * Created by mugku on 15. 5. 20..
- */
 public class LockscreenUtil {
     private Context mContext = null;
     private static LockscreenUtil mLockscreenUtilInstance;
@@ -21,8 +18,7 @@ public class LockscreenUtil {
         if (mLockscreenUtilInstance == null) {
             if (null != context) {
                 mLockscreenUtilInstance = new LockscreenUtil(context);
-            }
-            else {
+            } else {
                 mLockscreenUtilInstance = new LockscreenUtil();
             }
         }
@@ -36,9 +32,10 @@ public class LockscreenUtil {
     private LockscreenUtil(Context context) {
         mContext = context;
     }
+
     public boolean isStandardKeyguardState() {
         boolean isStandardKeyguqrd = false;
-        KeyguardManager keyManager =(KeyguardManager) mContext.getSystemService(mContext.KEYGUARD_SERVICE);
+        KeyguardManager keyManager = (KeyguardManager) mContext.getSystemService(mContext.KEYGUARD_SERVICE);
         if (null != keyManager) {
             isStandardKeyguqrd = keyManager.isKeyguardSecure();
         }
@@ -63,10 +60,10 @@ public class LockscreenUtil {
         return isSoftkey[0];
     }
 
-    public int getStatusBarHeight(){
-        int result=0;
-        int resourceId= mContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if(resourceId >0)
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = mContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
             result = mContext.getResources().getDimensionPixelSize(resourceId);
 
         return result;
