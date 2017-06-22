@@ -1,5 +1,7 @@
 package com.github.dubu.lockscreenusingservice.service;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.Context;
@@ -28,11 +30,12 @@ import com.github.dubu.lockscreenusingservice.SharedPreferencesUtil;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
+import java.io.InvalidObjectException;
+
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 public class LockscreenViewService extends Service {
-    private final int LOCK_OPEN_OFFSET_VALUE = 50;
     private Context mContext = null;
     private LayoutInflater mInflater = null;
     private View mLockscreenView = null;
@@ -44,7 +47,8 @@ public class LockscreenViewService extends Service {
     private RelativeLayout mForgroundLayout = null;
     private RelativeLayout mStatusBackgruondDummyView = null;
     private RelativeLayout mStatusForgruondDummyView = null;
-    private ShimmerTextView mShimmerTextView = null;
+    private ShimmerTextView shimmer_tv = null;
+
     private boolean mIsLockEnable = false;
     private boolean mIsSoftkeyEnable = false;
     private int mDeviceWidth = 0;
@@ -222,8 +226,10 @@ public class LockscreenViewService extends Service {
         mBackgroundInLayout = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_background_in_layout);
         mBackgroundLockImageView = (ImageView) mLockscreenView.findViewById(R.id.lockscreen_background_image);
         mForgroundLayout = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_forground_layout);
-        mShimmerTextView = (ShimmerTextView) mLockscreenView.findViewById(R.id.shimmer_tv);
-        (new Shimmer()).start(mShimmerTextView);
+        shimmer_tv = (ShimmerTextView) mLockscreenView.findViewById(R.id.shimmer_tv);
+
+        new Shimmer().start(shimmer_tv);
+
         mForgroundLayout.setOnTouchListener(mViewTouchListener);
 
         mStatusBackgruondDummyView = (RelativeLayout) mLockscreenView.findViewById(R.id.lockscreen_background_status_dummy);
@@ -297,12 +303,13 @@ public class LockscreenViewService extends Service {
                     firstTouchX = event.getX();
                     layoutPrevX = mForgroundLayout.getX();
                     layoutInPrevX = mBackgroundLockImageView.getX();
-                    if (firstTouchX <= LOCK_OPEN_OFFSET_VALUE) {
-                        isLockOpen = true;
-                    }
+
+                    isLockOpen = true;
+
                 }
                 break;
                 case MotionEvent.ACTION_MOVE: { // 2
+
                     if (isLockOpen) {
                         touchMoveX = (int) (event.getRawX() - firstTouchX);
                         if (mForgroundLayout.getX() >= 0) {
@@ -345,11 +352,35 @@ public class LockscreenViewService extends Service {
     private void optimizeForground(float forgroundX) {
 //        final int devideDeviceWidth = (mDeviceWidth / 2);
         if (forgroundX < mDevideDeviceWidth) {
-            int startPostion = 0;
-            for (startPostion = mDevideDeviceWidth; startPostion >= 0; startPostion--) {
-                mForgroundLayout.setX(startPostion);
-            }
+            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mForgroundLayout, "translationX", mForgroundLayout.getTranslationX(), 0f);
+            objectAnimator.setDuration(300);
+            objectAnimator.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    mBackgroundLockImageView.setX(-mBackgroundLockImageView.getWidth() / 2);
+                    mBackgroundLockImageView.setVisibility(View.INVISIBLE);
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mBackgroundLockImageView.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            });
+            objectAnimator.start();
+
         } else {
+            mBackgroundLockImageView.setX(mDevideDeviceWidth - mBackgroundLockImageView.getWidth() / 2);
+            //unlock
             TranslateAnimation animation = new TranslateAnimation(0, mDevideDeviceWidth, 0, 0);
             animation.setDuration(300);
             animation.setAnimationListener(new Animation.AnimationListener() {
